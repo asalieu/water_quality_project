@@ -17,7 +17,7 @@ let mailOptions = {
     from: process.env.EMAIL, // TODO: email sender
     to: process.env.EMAIL, // TODO: email receiver
     subject: 'New Sample Uploaded - Test',
-    text: 'A new water sample has been uploaded'
+    text: 'A new water sample file has been uploaded'
 };
 
 // Step 3
