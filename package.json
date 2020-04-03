@@ -9,7 +9,7 @@
     "client": "npm start --prefix client",
     "dev": "concurrently \"npm run server\" \"npm run client\""
   },
-  "author": "Hariprasad",
+  "author": "Alieu Sowe",
   "license": "ISC",
   "dependencies": {
     "bcrypt": "^3.0.6",
