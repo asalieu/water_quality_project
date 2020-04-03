@@ -14,10 +14,10 @@ let transporter = nodemailer.createTransport({
 
 // Step 2
 let mailOptions = {
-    from: 'sowealieu@gmail.com', // TODO: email sender
-    to: 'alieu05@live.com', // TODO: email receiver
-    subject: 'Nodemailer - Test',
-    text: 'Wooohooo it works!!'
+    from:  process.env.EMAIL, // TODO: email sender
+    to:  process.env.EMAIL, // TODO: email receiver
+    subject: 'New Sample Uploaded - Test',
+    text: 'A new water sample has been uploaded'
 };
 
 // Step 3
