@@ -5,14 +5,19 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
+import image from '../navbar/image.PNG'
+import { Link } from "react-router-dom";
+
 
 const useStyles = makeStyles(theme => ({
   root: {
     flexGrow: 1,
+    //backgroundImage:URL(image)
   },
   menuButton: {
     marginRight: theme.spacing(2),
   },
+
 }));
 
 export default function Navbar() {
@@ -26,7 +31,10 @@ export default function Navbar() {
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" color="inherit">
-            Weather Reporter
+            Drinking Water Treatment App
+          </Typography>
+          <Typography >
+             
           </Typography>
         </Toolbar>
       </AppBar>

@@ -14,15 +14,32 @@ import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import axios from 'axios';
 import { Redirect } from 'react-router-dom';
-import Main from '../weather/Main';
+import Main from '../userContext/Main';
 import Routes from '../routes/Routes';
 import Navbar from '../navbar/Navbar';
+import { urlencoded, json } from 'body-parser';
+import {InputLabel} from '@material-ui/core/' 
+import ocean from '../login/ocean.png'
 
 const useStyles = makeStyles(theme => ({
   '@global': {
     body: {
-      backgroundColor: theme.palette.common.white,
+      //backgroundColor: theme.palette.common.white,
+      backgroundColor: ''
     },
+
+    html: {
+      backgroundImage: `url(${ocean})`,
+      backgroundSize: 'cover',
+      overflow: 'hidden',
+      backgroundPosition: 'center center',
+      //opacity:'50%',
+      backgroundRepeat: 'repeat-y',
+      backgroundAttachment: 'scroll'
+    }
+  },
+  main_container: {
+
   },
   paper: {
     marginTop: theme.spacing(8),
@@ -55,28 +72,39 @@ export default function SignIn() {
     debugger;
     e.preventDefault();
 
-    axios.post('api/login', {
+    axios.post('/api/login', {
       email: email,
       password: password
     })
       .then(res => {
-        console.log(res);
-        if (res.data.code === 200 && res.data.role === "admin") {
-          console.log(res.data.role);
+        console.log(res.data.email)
+        if (res.data.email == email && res.data.pass == password) {
+          console.log("Im here " + `${email} \ ${password}`);
           setRedirect(true);
           setAdmin(true);
         }
-        else {
-          setRedirect(true);
+        if (res.data.code =="204")
+         {
+          console.log("Invalid " + `${email} \ ${password}`);
+          setRedirect(false);
+          alert("Im sorry you're wrong")
         }
-      })
+        else {
+          setRedirect(false);
+        }
+
+      }).catch(err =>{
+        if (err.res.code != 200) {
+          console.log('The server did not return a 200 code');
+        }
+      }) 
   }
 
   const classes = useStyles();
-
+  var labelerr="Invalid credentials";
   return (
     (redirect) ? ((admin) ? <Redirect to='/Dashboard' /> : <Redirect to='/Main' />) :
-      <div>
+      <div className={classes.main_container}>
         <Navbar />
         <Container component="main" maxWidth="xs">
 
@@ -106,7 +134,7 @@ export default function SignIn() {
               <TextField
                 variant="outlined"
                 margin="normal"
-                required
+                required="true"
                 fullWidth
                 name="password"
                 label="Password"
@@ -116,6 +144,7 @@ export default function SignIn() {
                 autoComplete="current-password"
                 onChange={e => setPasword(e.target.value)}
               />
+              <InputLabel  variant="outline" value={labelerr}  />
               <Button
                 type="submit"
                 fullWidth

@@ -64,7 +64,7 @@ const Dashboard = () => {
                 <Divider />
 
             </Drawer>
-            <h1>Welcome to admin Page</h1>
+            <h1>You have been Registered Successfully! Close the browser</h1>
         </div>
     );
 }
