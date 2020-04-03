@@ -1,6 +1,5 @@
 var express = require("express");
 var login = require('./routes/loginroutes');
-const csvdata = '../client/src/components/userContext/sample.csv'; 
 var bodyParser = require('body-parser');
 var fileUpload = require('express-fileupload');
 var cors = require('cors');
@@ -19,10 +18,6 @@ app.use(function(req, res, next) {
 
 var router = express.Router();
  
-app.get("/movie", function(req, res, next) {
-    res.send(csvdata);
-  });
-  
 //route to handle user registration
 router.post('/register',login.register);
 router.post('/login',login.login)
