@@ -7,17 +7,17 @@ const log = console.log;
 let transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
-        user: process.env.EMAIL || 'sowealieu@gmail.com', // TODO: your gmail account
-        pass: process.env.PASSWORD || 'Fbnjuban2$' // TODO: your gmail password
+        user: process.env.EMAIL, // TODO: your gmail account
+        pass: process.env.PASSWORD // TODO: your gmail password
     }
 });
 
 // Step 2
 let mailOptions = {
-    from: 'sowealieu@gmail.com', // TODO: email sender
-    to: 'sowealieu@gmail.com', // TODO: email receiver
-    subject: 'Nodemailer - Test',
-    text: 'Wooohooo it works!!'
+    from: process.env.EMAIL, // TODO: email sender
+    to: process.env.EMAIL, // TODO: email receiver
+    subject: 'New Sample Uploaded - Test',
+    text: 'A new water sample has been uploaded'
 };
 
 // Step 3
