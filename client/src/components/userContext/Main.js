@@ -5,38 +5,45 @@ import LeftPanel from './LeftPanel';
 import './css.css';
 import Chart from '../userContext/Chart'
 import { Link } from "react-router-dom";
-import {Settings} from '@material-ui/icons' 
-import { Bar, Scatter, Line, Pie } from 'react-chartjs-2' 
+import { Settings } from '@material-ui/icons'
+import { Bar, Scatter, Line, Pie } from 'react-chartjs-2'
 import { csv } from 'd3-request';
 import url from '../userContext/sample.csv';
-import Newchart from './newchart';  
+import Newchart from './newchart';
+import historam from './histogram';
+import Histogram from './histogram';
+import Gussian from './Gussian';
+import Gussianchart from './Gussianchart';
+import LoadImage from './LoadImage';
+import New from './New';
+import New1 from './New1';
+const photo = '../photo.png'
 
- 
 
 var tr;
 const API_KEY = 'e091fff3f8e3f791f442a48960501083';
 
 class Main extends React.Component {
 
-  state = { 
+  state = {
   }
 
   componentDidMount() {
-   // fetch("/api/location")
+    // fetch("/api/location")
 
 
-        csv(url, function(err, data) {
-           // console.log(data);
-            tr = data;
-        })  
+    csv(url, function (err, data) {
+      // console.log(data);
+      tr = data;
+    })
 
   }
 
 
 
-  render() { 
-     
-  
+  render() {
+
+
 
     return (
       <div>
@@ -46,35 +53,42 @@ class Main extends React.Component {
               <Navbar />
             </div>
           </div>
-          <div className="main">
+          <div className="main"><br />
+
+            <div className="row">
+
+            </div>
             <ul className="nav-panel">
               <li>
-                 <Link to="/Manage_Data" > Manage Data </Link>
+                <Link to="/Manage_Data" > Upload Data </Link>
               </li>
-              <li>
+              {/* <li>
                 <Link to="/"> Generate Report</Link>
               </li>
               <li>
                 <Link to="/"> FeedBack</Link>
-              </li>
+              </li> */}
             </ul>
+            <div className="h2row">
+              <h2>Visualization and Plotting</h2>
+            </div>
 
-            <marquee>Wellcome User, below is the machine learning clasification result for your water three most recent water samples</marquee>
-            <div className="container">   
-            <Newchart />
-            <Chart />
-              <div className="flex_container">
-                {/* <div class="item_1">
-                  <h4>Water Sample A</h4>
-                  <Chart />
-                </div>
-                <div class="item_2">
-                  <h4>Water Sample B</h4>
-                  <Chart />
-                </div> */}
-                <div class="item_3">
-                 
-                </div>
+
+
+            <div className="flex_container"
+            >
+
+              <div class="item_1">
+                <Chart />
+              </div>
+              <div class="item_2">
+                <New />
+              </div>
+              <div class="item_3">
+                <Newchart />
+              </div>
+              <div class="item_4">
+                <New1 />
               </div>
             </div>
           </div>

@@ -14,10 +14,10 @@ class Routes extends React.Component {
       <BrowserRouter>
         <Switch>
           <Route path='/' exact component={SignIn} />
+          <Route path='/Manage_Data'  component ={Manage_Data} />
           <Route path='/Manage' component={Manage} />
           <Route path='/SignUp' component={SignUp} />
-          <Route path='/Main' component={Main} />         
-          <Route path='/Manage_Data' component ={Manage_Data} />
+          <Route path='/Main' component={Main} />                   
           <Route path='/Dashboard' component={Dashboard} />
         </Switch>
       </BrowserRouter>

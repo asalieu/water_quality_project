@@ -1,18 +1,9 @@
 import React, { Component } from 'react';
 import { Scatter, Line, Pie } from 'react-chartjs-2'
-//import { csv } from 'd3-request';
-//import url from '../userContext/sample.csv';
-
 const xlabels = [];
 const ytemps = [];
 const mdata = [];
-// var testTable = [];
-// var year = [];
-// var columns = [];
-
-//var columns=[];
-export class Chart extends Component {
-
+export class New extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -25,7 +16,7 @@ export class Chart extends Component {
 
     componentDidMount() {
         var newData = new  Array();
-        fetch('../sampleout.csv')
+        fetch('../sample.csv')
             .then((response) => //response.json()
             {
                 return response.text();
@@ -58,9 +49,9 @@ export class Chart extends Component {
                     data: {
                         datasets: [{ 
                             borderWidth: 1,
-                            backgroundColor: 'rgba(255, 99,132,1.5)',
-                           borderColor: 'rgb(155, 40, 122)',
-                            label: 'Clean Water Sample',
+                            backgroundColor: 'rgba(155, 89,32,22)',
+                           borderColor: 'rgb(65, 80, 0)',
+                            label: 'New Water Sample',
                             data: newData
                                 // {
                                 //     x: xlabels[0][0],
@@ -127,4 +118,5 @@ export class Chart extends Component {
 
     }
 }
-export default Chart
+
+export default New;

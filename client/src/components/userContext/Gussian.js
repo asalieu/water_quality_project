@@ -10,12 +10,7 @@ const testTable = [];
 var year = [];
 var columns = [];
 
-
-//const test;
-//const _data;
-
-export class Newchart extends Component {
-
+class Gussian extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -24,7 +19,7 @@ export class Newchart extends Component {
 
     }
     componentDidMount() {
-        fetch('../sampleout.csv')
+        fetch('../tsample.csv')
             .then((response) => {
                 return response.text();
             })
@@ -41,21 +36,32 @@ export class Newchart extends Component {
                 this.setState({
                     _csv: data,
                     data: {
-                        labels: xlabels,
+                        labels: [4, 6, 9, 10, 15, 22,44, 36, 19, 11, 9, 4],
                         datasets: [
                             {
                                 label: "Bacteria Cells",
                                 backgroundColor: "rgba(255,0 ,255 , 0.75)",
-                                //data: [4, 6, 9, 10, 15, 22]
-                                data:xlabels
+                                data: [4, 6, 9, 10, 15, 22,44, 36, 19, 11, 9, 4]
+                                //data:xlabels
                             },
                             {
-                                label: "Debries",
-                                backgroundColor: "rgba(0 ,255 ,0, 0.75)",
-                               // data: [44, 36, 19, 11, 9, 4]
-                               data:ytemps
+                               label: "Debries",
+                               backgroundColor: "rgba(0 ,255 ,0, 0.75)",
+                               data: [44, 36, 19, 11, 9, 4, 22, 77,16, 13, 10,13]
+                               //data:ytemps
                             }
-                        ]
+                        ],
+                        options:{
+                            scale: {
+                                angleLines: {
+                                    display: false
+                                },
+                                ticks: {
+                                    suggestedMin: 50,
+                                    suggestedMax: 100
+                                }
+                            }
+                        }
                     }
                 });
 
@@ -71,7 +77,7 @@ export class Newchart extends Component {
         return (
             <div style={{ position: "relative"}}>
                 
-                <Line
+                <Radar
                     options={{
                         responsive: true
                     }}
@@ -82,7 +88,6 @@ export class Newchart extends Component {
             </div>
         )
     }
-
-
 }
-export default Newchart;
+
+export default Gussian;

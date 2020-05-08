@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Line, Scatter, Bar, Radar, Bubble,Area,Mixed,Pie,Doughnut } from 'react-chartjs-2'
+import { Line, Scatter, Bar, Radar, Bubble, Area, Mixed, Pie, Doughnut } from 'react-chartjs-2'
 import { Link } from '@material-ui/core';
 //import { response } from 'express';
 //import { response } from 'express';
@@ -10,21 +10,16 @@ const testTable = [];
 var year = [];
 var columns = [];
 
-
-//const test;
-//const _data;
-
-export class Newchart extends Component {
-
+class Gussianchart extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            _csv: [] 
+            _csv: []
         };
 
     }
     componentDidMount() {
-        fetch('../sampleout.csv')
+        fetch('../tsample.csv')
             .then((response) => {
                 return response.text();
             })
@@ -41,26 +36,38 @@ export class Newchart extends Component {
                 this.setState({
                     _csv: data,
                     data: {
-                        labels: xlabels,
+                        labels: ['FL1-A', 'FL2-H', 'FL3-A', 'FL4-H'],
                         datasets: [
                             {
-                                label: "Bacteria Cells",
-                                backgroundColor: "rgba(255,0 ,255 , 0.75)",
-                                //data: [4, 6, 9, 10, 15, 22]
-                                data:xlabels
+                                label: "Sample A",
+                                backgroundColor: "rgba(0 ,255 ,0, 0.75)",
+                                data: [65, 75, 70, 80, 60, 80]
+
                             },
                             {
-                                label: "Debries",
-                                backgroundColor: "rgba(0 ,255 ,0, 0.75)",
-                               // data: [44, 36, 19, 11, 9, 4]
-                               data:ytemps
+                                label: "Sample B",
+                                backgroundColor: "rgba(255,0 ,255 , 0.75)",
+                                data: [54, 65, 60, 70, 70, 75]
+
+                                //data:ytemps
                             }
-                        ]
+                        ],
+                        options: {
+                            scale: {
+                                angleLines: {
+                                    display: false
+                                },
+                                ticks: {
+                                    suggestedMin: 50,
+                                    suggestedMax: 100
+                                }
+                            }
+                        }
                     }
                 });
 
-                console.log("From after _csv " +year);
-               // console.log("From after columns " + columns);
+                console.log("From after _csv " + year);
+                // console.log("From after columns " + columns);
             });
 
 
@@ -69,9 +76,9 @@ export class Newchart extends Component {
 
     render() {
         return (
-            <div style={{ position: "relative"}}>
-                
-                <Line
+            <div style={{ position: "relative" }}>
+
+                <Radar
                     options={{
                         responsive: true
                     }}
@@ -82,7 +89,6 @@ export class Newchart extends Component {
             </div>
         )
     }
-
-
 }
-export default Newchart;
+
+export default Gussianchart;

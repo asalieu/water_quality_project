@@ -15,7 +15,7 @@ import NotificationsIcon from '@material-ui/icons/Notifications';
 import { SettingsApplications } from '@material-ui/icons';
 import Icon from '@material-ui/core/Icon';
 import Typography from '@material-ui/core/Typography'
-import FileUpload from './FileUpload';
+import FileUpload2 from './FileUpload2';
 class Manage_Data extends React.Component {
     constructor() {
         super();
@@ -39,15 +39,15 @@ class Manage_Data extends React.Component {
                     <div className="main">
                         <ul className="nav-panel">                              
                             <li>
-                                <Link to="/Main"> Home</Link>
+                                <Link to="/Main"> Visualize</Link>
                             </li>
 
                         </ul> 
                         <div className="container">
                             <div className="_flex_container">
-                                <div class="_item_1" >
-                                    <h4><strong>Please Upload your <em>FCS</em> files here below</strong></h4> 
-                                    <FileUpload />
+                                <div class="manage" >
+                                <h3><strong>Please Upload your <em>FCS</em> files here below</strong></h3> 
+                                    <FileUpload2 />
                                 </div>
                                  
                             </div>
